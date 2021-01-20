@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布博客</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./editormd/css/editormd.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="./editormd/editormd.min.js"></script>
+    <script src="js/myjs.js"></script>
+    <script type="text/javascript">
+        //初始化Markdown编辑器
+        var contentEditor;
+        $(function() {
+            contentEditor = editormd("md-content", {
+                width   : "100%",//宽度
+                height  : 500,//高度
+                syncScrolling : "single",//单滚动条
+                path    : "./editormd/lib/"//依赖的包路径
+            });
+        });
+        //获得md并发布
+        function getMd(){
+            var as = document.getElementsByTagName('pre');
+            let markdown="";
+            let count=0;
+            for(var i=0,j=as.length;i<j;i++){
+                if (i==j-count/2){
+                    if (confirm("确认发布？")==true){
+                        console.log(markdown);//发布
+                        return;
+                    }else {
+                        return;
+                    }
+                }
+                let textLine=as[i].innerText
+                if (textLine.indexOf("```")!=-1){
+                    count+=1;
+                }
+                markdown+=textLine+"\n";
+            }
+            if (confirm("确认发布？")==true) {
+                console.log(markdown);
+            }
+        }
+        //发布方法(id,标题，分类，数据)
+        function send(id,title,classify,data){
+
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <top-header id="top-header"></top-header>
+    <div class="row clearfix">
+        <div class="col-md-10 column">
+<!--            标题-->
+            <form role="form" class="form-inline">
+                <div class="form-group">
+                    标题：<input type="text" class="form-control" id="title" placeholder="标题"/>&nbsp;
+                </div>
+<!--            分类-->
+                请选择分类：
+                <div class="form-group">
+                    <select class="selectpicker">
+                        <option>日常</option>
+                        <option>java</option>
+                        <option>Python</option>
+                    </select>
+                </div>
+            </form>
+<!--            编辑器-->
+            <div id="md-content" style="z-index: 1 !important;">
+                <textarea></textarea>
+            </div>
+        </div>
+        <div class="col-md-2 column">
+            <dl>
+                <dt>
+                    发布须知
+                </dt>
+                <ul class="list-unstyled">
+                    <li>
+                        1.暂不支持修改
+                    </li>
+                    <li>
+                        2.有审核时间，有问题的文章会被扣留，进行人工审核
+                    </li>
+                    <li>
+                        3.只支持markdown形式发布
+                    </li>
+                    <li>
+                        4.编辑器未必能显示正确的样式，建议源代码复制
+                    </li>
+                    <li>
+                        5.不推荐使用上边的工具，提交文本有可能会出现多余字符
+                    </li>
+                    <li>
+                        6.数据刷新及消失，建议不适用网页编辑器编辑，使用复制更为保险
+                    </li>
+                </ul>
+            </dl>
+            <button type="button" class="btn btn-default" onclick="getMd()">发布</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

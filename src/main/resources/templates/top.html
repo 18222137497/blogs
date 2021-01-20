@@ -5,7 +5,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active">
+                    <li >
                         <a href="#">首页</a>
                     </li>
                     <li>
@@ -21,18 +21,18 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">分类<strong class="caret"></strong></a>
                         <ul class="dropdown-menu">
                         <table class="table table-bordered">
-                            <tr class="info">
+                            <tr >
                                 <td>
-                                    Java
+                                    <a href="#">Java</a>
                                 </td>
                                 <td>
-                                    Python
+                                    <a href="#">Python</a>
                                 </td>
                                 <td>
-                                    C#
+                                    <a href="#">C#</a>
                                 </td>
                                 <td>
-                                    Go
+                                    <a href="#">Go</a>
                                 </td>
                             </tr>
                         </table>
@@ -49,30 +49,10 @@
                         <img alt="32x32" src="img/222.png"  class="img-circle" style="margin-top: 7px" height="32" width="32"  />
                     </li>
                     <li>
-                        <a href="#" style="color: steelblue">昵称</a>
+                        <a href="#" style="color: steelblue">老子大过天</a>
                     </li>
-                    <li class="dropdown" >
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"  >消息<strong class="caret"></strong></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#">公告</a>
-                            </li>
-                            <li>
-                                <a href="#">关注</a>
-                            </li>
-                            <li>
-                                <a href="#">私信</a>
-                            </li>
-                            <li>
-                                <a href="#">点赞</a>
-                            </li>
-                            <li>
-                                <a href="#">评论</a>
-                            </li>
-                            <li>
-                                <a href="#">系统通知</a>
-                            </li>
-                        </ul>
+                    <li>
+                        <a href="#" >消息</a>
                     </li>
                     <li>
                         <a href="#" >收藏</a>
@@ -92,11 +72,19 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"  >系统<strong class="caret"></strong></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#">合作</a>
+                                <a href="#" onclick="hz()">合作</a>
                             </li>
                             <li>
-                                <a href="#">关于</a>
+                                <a href="#" onclick="gy()">关于</a>
                             </li>
+                            <script>
+                                function hz(){
+                                    alert("请邮件到18222137497@163.com")
+                                }
+                                function gy(){
+                                    alert("项目创建日期：2021/01/20")
+                                }
+                            </script>
                             <li class="divider">
                             </li>
                             <li>

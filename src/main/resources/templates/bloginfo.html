@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客标题</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/myjs.js"></script>
+<!--    md转换-->
+    <!--引入样式文件-->
+    <link rel="stylesheet" href="editormd/examples/css/style.css" />
+    <link rel="stylesheet" href="editormd/css/editormd.preview.css" />
+
+    <!--引入js文件-->
+    <script src="editormd/examples/js/jquery.min.js"></script>
+    <script src="editormd/lib/marked.min.js"></script>
+    <script src="editormd/lib/prettify.min.js"></script>
+    <script src="editormd/lib/raphael.min.js"></script>
+    <script src="editormd/lib/underscore.min.js"></script>
+    <script src="editormd/lib/sequence-diagram.min.js"></script>
+    <script src="editormd/lib/flowchart.min.js"></script>
+    <script src="editormd/lib/jquery.flowchart.min.js"></script>
+    <script src="editormd/editormd.js"></script>
+</head>
+<body>
+<div class="container">
+    <top-header id="top-header"></top-header>
+    <div class="row clearfix">
+        <div class="col-md-3 column">
+            <weather id="weather"></weather>
+        </div>
+        <div class="col-md-9 column">
+            <ul class="list-unstyled">
+                <li  class="panel-footer">
+                    <span >
+                        <h4>
+                            <h1>文章题目</h1>
+                            <a class="btn navbar-right" href="#" style="margin-right: 0px">举报</a>
+                        </h4>
+                        <p>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <img alt="32x32" src="img/222.png"  class="img-circle" height="32" width="32"  />
+                                    <b>老子大过天</b>
+                                    <span>&nbsp;&nbsp;<font color="navy">教师</font></span>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table" >
+                                        <tr>
+                                            <td>
+                                                <b>博客</b>
+                                            </td>
+                                            <td>
+                                                <b>访问</b>
+                                            </td>
+                                            <td>
+                                                <b>标签</b>
+                                            </td>
+                                        </tr>
+                                        <tr >
+                                            <td>
+                                                <i>4</i>
+                                            </td>
+                                            <td>
+                                                <i>300</i>
+                                            </td>
+                                            <td>
+                                                <i>网站创始人</i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>粉丝</b>
+                                            </td>
+                                            <td>
+                                                <b>获赞</b>
+                                            </td>
+                                            <td>
+                                                <b>收藏</b>
+                                            </td>
+                                        </tr>
+                                        <tr >
+                                            <td>
+                                                <i>4</i>
+                                            </td>
+                                            <td>
+                                                <i>14</i>
+                                            </td>
+                                            <td>
+                                                <i>1</i>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <span class="navbar-left">
+                                发布时间：2021/1/20 15:50
+                            </span>
+                            <span class="navbar-right">
+                                观看：100 | 点赞：100 | 评论：100
+                            </span>
+                        </p>
+                    </span>
+                    </a>
+                </li>
+            </ul>
+            <!--            正文-->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <!--在该div中展示,如有初始化的数据可以放在textarea中-->
+                    <div id="testEditorMdview">
+                        <textarea id="appendTest" style="display:none;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--js开始-->
+            <script type="text/javascript">
+                //页面加载完成执行方法
+                window.onload(mdToHml());
+                //markDown转HTMl的方法
+                function mdToHml(){
+                    //先对容器初始化，在需要展示的容器中创建textarea隐藏标签，
+                    $("#testEditorMdview").html('<textarea id="appendTest" style="display:none;"></textarea>');
+
+                    var content="" +
+                        "### 中间件\n" +
+                        "\n" +
+                        "#### jsf\n" +
+                        "\n" +
+                        "> 类似与dubbo的RPC框架，适用于分布式架构下服务与服务之间的同步调用\n" +
+                        "\n" +
+                        "##### 服务接口设计原则\n" +
+                        "\n" +
+                        "<ul>\n" +
+                        "    <li>出于性能的考虑，由于jsf适用于数据量小(单次请求小于20k)并发大的场景，定义的接口接收的参数类型尽量用简单类型，尽量使用Interger、Boolean这样的短类型</li>\n" +
+                        "    <li>保证每次RPC调用的原子性，尽量使一个事务对应一个RPC请求，保证关键接口的幂等性(就是多次调用的结果不变，理解为接口返回不随调用改变)</li>\n" +
+                        "    <li>估算线上并发量，考虑每个请求的大小以及现有服务器的带宽，以此为标准计算需要部署服务的实例数，尽量减少资源的浪费</li>\n" +
+                        "</ul>\n" +
+                        "\n" +
+                        "\n" +
+                        "##### 入门\n" +
+                        "\n" +
+                        "###### 引入jar\n" +
+                        "\n" +
+                        "```xml\n" +
+                        "<dependency>\n" +
+                        "    <groupId>com.jd</groupId>\n" +
+                        "    <artifactId>jsf</artifactId>\n" +
+                        "    <version>最新版本</version>\n" +
+                        "</dependency>\n" +
+                        "```\n" +
+                        "\n" +
+                        "###### 设计一个接口\n" +
+                        "\n" +
+                        "```java\n" +
+                        "public interface HelloService {\n" +
+                        "    public String echoStr(String str);\n" +
+                        "}\n" +
+                        "```\n" +
+                        "\n" +
+                        "###### 编写接口的实现类\n" +
+                        "\n" +
+                        "```java\n" +
+                        "public class HelloServiceImpl implements HelloService {\n" +
+                        "    @Override\n" +
+                        "    public String echoStr(String str) {\n" +
+                        "        System.out.println(str);\n" +
+                        "        return str;\n" +
+                        "    }\n" +
+                        "}\n" +
+                        "```\n" +
+                        "\n" +
+                        "###### 依赖管理注册服务\n" +
+                        "\n" +
+                        "```xml\n" +
+                        "<!-- 实现类  -->\n" +
+                        "<bean id=\"helloServiceImpl\" class=\"com.jd.testjsf.HelloServiceImpl\" />\n" +
+                        "<!--    index为发布到指定的(服务?地址?集群?)-->\n" +
+                        "<jsf:registry id=\"jsfRegistry\" index=\"test.i.jsf.jd.local\" />\n" +
+                        "<!-- 服务端 端口默认22000, 如果port设置为-1，那么就是随机端口，也就是从最高端口往上加-->\n" +
+                        "<!-- 服务器多网卡多IP时，会随机取连上注册中心的地址，所以最好加一个host-->\n" +
+                        "<!--需要设置一个服务id-->\n" +
+                        "<jsf:server id=\"myjsf\" protocol=\"jsf\" port=\"22000\" host=\"10.2.34.149\" />\n" +
+                        "<!-- 发布服务 alias可以改成自己的 -->\n" +
+                        "<!--    必须要保证单一的alias,server对应上面注册的服务,interface与alias为客户端调用时定位用的两个属性-->\n" +
+                        "<jsf:provider id=\"helloService\" interface=\"com.jd.testjsf.HelloService\" alias=\"WJ\"\n" +
+                        "              ref=\"helloServiceImpl\" server=\"myjsf\" >\n" +
+                        "</jsf:provider>\n" +
+                        "```\n" +
+                        "\n" +
+                        "";//获取需要转换的内容
+
+                    $("#appendTest").val(content);//将需要转换的内容加到转换后展示容器的textarea隐藏标签中
+
+                    //转换开始,第一个参数是上面的div的id
+                    editormd.markdownToHTML("testEditorMdview", {
+                        htmlDecode: "style,script,iframe", //可以过滤标签解码
+                        emoji: true,
+                        taskList:true,
+                        tex: true,               // 默认不解析
+                        flowChart:true,         // 默认不解析
+                        sequenceDiagram:true,  // 默认不解析
+                    });
+                }
+            </script>
+        </div>
+    </div>
+</div>
+</body>
+</html>
