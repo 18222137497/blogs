@@ -13,40 +13,42 @@
     <script type="text/javascript">
         //初始化Markdown编辑器
         var contentEditor;
-        $(function() {
+        $(function () {
             contentEditor = editormd("md-content", {
-                width   : "100%",//宽度
-                height  : 500,//高度
-                syncScrolling : "single",//单滚动条
-                path    : "./editormd/lib/"//依赖的包路径
+                width: "100%",//宽度
+                height: 500,//高度
+                syncScrolling: "single",//单滚动条
+                path: "./editormd/lib/"//依赖的包路径
             });
         });
+
         //获得md并发布
-        function getMd(){
+        function getMd() {
             var as = document.getElementsByTagName('pre');
-            let markdown="";
-            let count=0;
-            for(var i=0,j=as.length;i<j;i++){
-                if (i==j-count/2){
-                    if (confirm("确认发布？")==true){
+            let markdown = "";
+            let count = 0;
+            for (var i = 0, j = as.length; i < j; i++) {
+                if (i == j - count / 2) {
+                    if (confirm("确认发布？") == true) {
                         console.log(markdown);//发布
                         return;
-                    }else {
+                    } else {
                         return;
                     }
                 }
-                let textLine=as[i].innerText
-                if (textLine.indexOf("```")!=-1){
-                    count+=1;
+                let textLine = as[i].innerText
+                if (textLine.indexOf("```") != -1) {
+                    count += 1;
                 }
-                markdown+=textLine+"\n";
+                markdown += textLine + "\n";
             }
-            if (confirm("确认发布？")==true) {
+            if (confirm("确认发布？") == true) {
                 console.log(markdown);
             }
         }
+
         //发布方法(id,标题，分类，数据)
-        function send(id,title,classify,data){
+        function send(id, title, classify, data) {
 
         }
     </script>
@@ -56,12 +58,12 @@
     <top-header id="top-header"></top-header>
     <div class="row clearfix">
         <div class="col-md-10 column">
-<!--            标题-->
+            <!--            标题-->
             <form role="form" class="form-inline">
                 <div class="form-group">
                     标题：<input type="text" class="form-control" id="title" placeholder="标题"/>&nbsp;
                 </div>
-<!--            分类-->
+                <!--            分类-->
                 请选择分类：
                 <div class="form-group">
                     <select class="selectpicker">
@@ -71,7 +73,7 @@
                     </select>
                 </div>
             </form>
-<!--            编辑器-->
+            <!--            编辑器-->
             <div id="md-content" style="z-index: 1 !important;">
                 <textarea></textarea>
             </div>

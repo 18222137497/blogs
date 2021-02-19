@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangjing921.mapper.LphotoMapper">
+  <resultMap id="BaseResultMap" type="cn.wangjing921.domain.po.Lphoto">
+    <id column="lpid" jdbcType="INTEGER" property="lpid" />
+    <result column="lpurl" jdbcType="VARCHAR" property="lpurl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lpid, lpurl
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lphoto
+    where lpid = #{lpid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lphoto
+    where lpid = #{lpid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="lpid" keyProperty="lpid" parameterType="cn.wangjing921.domain.po.Lphoto" useGeneratedKeys="true">
+    insert into lphoto (lpurl)
+    values (#{lpurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="lpid" keyProperty="lpid" parameterType="cn.wangjing921.domain.po.Lphoto" useGeneratedKeys="true">
+    insert into lphoto
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lpurl != null">
+        lpurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lpurl != null">
+        #{lpurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.wangjing921.domain.po.Lphoto">
+    update lphoto
+    <set>
+      <if test="lpurl != null">
+        lpurl = #{lpurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lpid = #{lpid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.wangjing921.domain.po.Lphoto">
+    update lphoto
+    set lpurl = #{lpurl,jdbcType=VARCHAR}
+    where lpid = #{lpid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,13 +1,14 @@
-package cn.wangjing921.utils;
+package cn.wangjing921.common.utils;
 
 import org.springframework.util.DigestUtils;
 
 
 /**
  * MD5加密工具
+ * @author afflatus
  */
 public class MD5Util {
-    public String encoding(String code)  {
+    public String encoding(String code) {
         //spring md5加密
         byte[] md5bytes = DigestUtils.md5Digest(code.getBytes());
         //装载

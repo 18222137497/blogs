@@ -1,9 +1,10 @@
-package cn.wangjing921.domain.model;
+package cn.wangjing921.domain.pojo;
 
 import lombok.Data;
 
 /**
  * 响应体
+ * @author afflatus
  */
 @Data
 public class Result<T> {

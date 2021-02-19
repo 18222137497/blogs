@@ -7,10 +7,10 @@
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/myjs.js"></script>
-<!--    md转换-->
+    <!--    md转换-->
     <!--引入样式文件-->
-    <link rel="stylesheet" href="editormd/examples/css/style.css" />
-    <link rel="stylesheet" href="editormd/css/editormd.preview.css" />
+    <link rel="stylesheet" href="editormd/examples/css/style.css"/>
+    <link rel="stylesheet" href="editormd/css/editormd.preview.css"/>
 
     <!--引入js文件-->
     <script src="editormd/examples/js/jquery.min.js"></script>
@@ -32,8 +32,8 @@
         </div>
         <div class="col-md-9 column">
             <ul class="list-unstyled">
-                <li  class="panel-footer">
-                    <span >
+                <li class="panel-footer">
+                    <span>
                         <h4>
                             <h1>文章题目</h1>
                             <a class="btn navbar-right" href="#" style="margin-right: 0px">举报</a>
@@ -41,12 +41,12 @@
                         <p>
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <img alt="32x32" src="img/222.png"  class="img-circle" height="32" width="32"  />
+                                    <img alt="32x32" src="img/222.png" class="img-circle" height="32" width="32"/>
                                     <b>老子大过天</b>
                                     <span>&nbsp;&nbsp;<font color="navy">教师</font></span>
                                 </div>
                                 <div class="panel-body">
-                                    <table class="table" >
+                                    <table class="table">
                                         <tr>
                                             <td>
                                                 <b>博客</b>
@@ -58,7 +58,7 @@
                                                 <b>标签</b>
                                             </td>
                                         </tr>
-                                        <tr >
+                                        <tr>
                                             <td>
                                                 <i>4</i>
                                             </td>
@@ -80,7 +80,7 @@
                                                 <b>收藏</b>
                                             </td>
                                         </tr>
-                                        <tr >
+                                        <tr>
                                             <td>
                                                 <i>4</i>
                                             </td>
@@ -118,12 +118,13 @@
             <script type="text/javascript">
                 //页面加载完成执行方法
                 window.onload(mdToHml());
+
                 //markDown转HTMl的方法
-                function mdToHml(){
+                function mdToHml() {
                     //先对容器初始化，在需要展示的容器中创建textarea隐藏标签，
                     $("#testEditorMdview").html('<textarea id="appendTest" style="display:none;"></textarea>');
 
-                    var content="" +
+                    var content = "" +
                         "### 中间件\n" +
                         "\n" +
                         "#### jsf\n" +
@@ -197,10 +198,10 @@
                     editormd.markdownToHTML("testEditorMdview", {
                         htmlDecode: "style,script,iframe", //可以过滤标签解码
                         emoji: true,
-                        taskList:true,
+                        taskList: true,
                         tex: true,               // 默认不解析
-                        flowChart:true,         // 默认不解析
-                        sequenceDiagram:true,  // 默认不解析
+                        flowChart: true,         // 默认不解析
+                        sequenceDiagram: true,  // 默认不解析
                     });
                 }
             </script>

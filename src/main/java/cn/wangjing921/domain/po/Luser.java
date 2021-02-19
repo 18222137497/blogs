@@ -1,27 +1,89 @@
 package cn.wangjing921.domain.po;
 
-import lombok.Data;
-
+import java.io.Serializable;
 import java.util.Date;
+import lombok.Data;
 
 /**
  * 用户表
+ * @author afflatus
  */
 @Data
-public class Luser {
+public class Luser implements Serializable {
+    /**
+     * 主键不展示
+     */
     private Integer luserid;
+
+    /**
+     * 用户登录用
+     */
     private String username;
+
+    /**
+     * 密码
+     */
     private String password;
-    private Integer phone;//手机号
-    private Integer blognum;//发布博客数
-    private Integer look;//被访问量
-    private String label;//账号描述
-    private Integer nice;//被点赞数
-    private Integer fans;//被关注数
-    private Integer nickname;//昵称
-    private Integer photo;//对应头像表id
-    private Integer live;//激活状态
-    private Date createdate;//创建时间
-    private Date deldate;//拉黑时间
-    private Integer livenum;//活跃度预留属性
+
+    /**
+     * 手机号
+     */
+    private Integer phone;
+
+    /**
+     * 发布博客数
+     */
+    private Integer blognum;
+
+    /**
+     * 被访问量(考虑一人只能造成一次单向访问)
+     */
+    private Integer look;
+
+    /**
+     * 账号描述
+     */
+    private String label;
+
+    /**
+     * 获赞数
+     */
+    private Integer nice;
+
+    /**
+     * 被关注数
+     */
+    private Integer fans;
+
+    /**
+     * 昵称
+     */
+    private Integer nickname;
+
+    /**
+     * 头像(有默认值，需要新增头像修改功能)
+     */
+    private Integer photo;
+
+    /**
+     * 激活/开启状态(0未激活1正常2禁用)
+     */
+    private Integer live;
+
+    /**
+     * 创建时间
+     */
+    private Date createdate;
+
+    /**
+     * 失效时间
+     */
+    private Date deldate;
+
+    /**
+     * 预留属性，活跃度
+     */
+    private Integer livenum;
+
+    private static final long serialVersionUID = 1L;
 }

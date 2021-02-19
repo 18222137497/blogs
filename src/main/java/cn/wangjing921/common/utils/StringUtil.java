@@ -1,7 +1,8 @@
-package cn.wangjing921.utils;
+package cn.wangjing921.common.utils;
 
 /**
  * 字符串工具类
+ * @author afflatus
  */
 public class StringUtil {
     //空白

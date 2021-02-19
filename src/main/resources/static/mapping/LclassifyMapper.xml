@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangjing921.mapper.LclassifyMapper">
+  <resultMap id="BaseResultMap" type="cn.wangjing921.domain.po.Lclassify">
+    <id column="lclassifyid" jdbcType="INTEGER" property="lclassifyid" />
+    <result column="lclassifytitle" jdbcType="VARCHAR" property="lclassifytitle" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lclassifyid, lclassifytitle
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lclassify
+    where lclassifyid = #{lclassifyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lclassify
+    where lclassifyid = #{lclassifyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="lclassifyid" keyProperty="lclassifyid" parameterType="cn.wangjing921.domain.po.Lclassify" useGeneratedKeys="true">
+    insert into lclassify (lclassifytitle)
+    values (#{lclassifytitle,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="lclassifyid" keyProperty="lclassifyid" parameterType="cn.wangjing921.domain.po.Lclassify" useGeneratedKeys="true">
+    insert into lclassify
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lclassifytitle != null">
+        lclassifytitle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lclassifytitle != null">
+        #{lclassifytitle,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.wangjing921.domain.po.Lclassify">
+    update lclassify
+    <set>
+      <if test="lclassifytitle != null">
+        lclassifytitle = #{lclassifytitle,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lclassifyid = #{lclassifyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.wangjing921.domain.po.Lclassify">
+    update lclassify
+    set lclassifytitle = #{lclassifytitle,jdbcType=VARCHAR}
+    where lclassifyid = #{lclassifyid,jdbcType=INTEGER}
+  </update>
+</mapper>

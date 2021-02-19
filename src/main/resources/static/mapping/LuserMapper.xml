@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangjing921.mapper.LuserMapper">
+  <resultMap id="BaseResultMap" type="cn.wangjing921.domain.po.Luser">
+    <id column="luserid" jdbcType="INTEGER" property="luserid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="blognum" jdbcType="INTEGER" property="blognum" />
+    <result column="look" jdbcType="INTEGER" property="look" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="nice" jdbcType="INTEGER" property="nice" />
+    <result column="fans" jdbcType="INTEGER" property="fans" />
+    <result column="nickname" jdbcType="INTEGER" property="nickname" />
+    <result column="photo" jdbcType="INTEGER" property="photo" />
+    <result column="live" jdbcType="INTEGER" property="live" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="deldate" jdbcType="TIMESTAMP" property="deldate" />
+    <result column="livenum" jdbcType="INTEGER" property="livenum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    luserid, username, `password`, phone, blognum, look, `label`, nice, fans, nickname, 
+    photo, live, createdate, deldate, livenum
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from luser
+    where luserid = #{luserid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from luser
+    where luserid = #{luserid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="luserid" keyProperty="luserid" parameterType="cn.wangjing921.domain.po.Luser" useGeneratedKeys="true">
+    insert into luser (username, `password`, phone, 
+      blognum, look, `label`, 
+      nice, fans, nickname, 
+      photo, live, createdate, 
+      deldate, livenum)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, 
+      #{blognum,jdbcType=INTEGER}, #{look,jdbcType=INTEGER}, #{label,jdbcType=VARCHAR}, 
+      #{nice,jdbcType=INTEGER}, #{fans,jdbcType=INTEGER}, #{nickname,jdbcType=INTEGER}, 
+      #{photo,jdbcType=INTEGER}, #{live,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{deldate,jdbcType=TIMESTAMP}, #{livenum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="luserid" keyProperty="luserid" parameterType="cn.wangjing921.domain.po.Luser" useGeneratedKeys="true">
+    insert into luser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="blognum != null">
+        blognum,
+      </if>
+      <if test="look != null">
+        look,
+      </if>
+      <if test="label != null">
+        `label`,
+      </if>
+      <if test="nice != null">
+        nice,
+      </if>
+      <if test="fans != null">
+        fans,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="live != null">
+        live,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="deldate != null">
+        deldate,
+      </if>
+      <if test="livenum != null">
+        livenum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="blognum != null">
+        #{blognum,jdbcType=INTEGER},
+      </if>
+      <if test="look != null">
+        #{look,jdbcType=INTEGER},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="nice != null">
+        #{nice,jdbcType=INTEGER},
+      </if>
+      <if test="fans != null">
+        #{fans,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=INTEGER},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=INTEGER},
+      </if>
+      <if test="live != null">
+        #{live,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deldate != null">
+        #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="livenum != null">
+        #{livenum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.wangjing921.domain.po.Luser">
+    update luser
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=INTEGER},
+      </if>
+      <if test="blognum != null">
+        blognum = #{blognum,jdbcType=INTEGER},
+      </if>
+      <if test="look != null">
+        look = #{look,jdbcType=INTEGER},
+      </if>
+      <if test="label != null">
+        `label` = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="nice != null">
+        nice = #{nice,jdbcType=INTEGER},
+      </if>
+      <if test="fans != null">
+        fans = #{fans,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=INTEGER},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=INTEGER},
+      </if>
+      <if test="live != null">
+        live = #{live,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deldate != null">
+        deldate = #{deldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="livenum != null">
+        livenum = #{livenum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where luserid = #{luserid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.wangjing921.domain.po.Luser">
+    update luser
+    set username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=INTEGER},
+      blognum = #{blognum,jdbcType=INTEGER},
+      look = #{look,jdbcType=INTEGER},
+      `label` = #{label,jdbcType=VARCHAR},
+      nice = #{nice,jdbcType=INTEGER},
+      fans = #{fans,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=INTEGER},
+      photo = #{photo,jdbcType=INTEGER},
+      live = #{live,jdbcType=INTEGER},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      deldate = #{deldate,jdbcType=TIMESTAMP},
+      livenum = #{livenum,jdbcType=INTEGER}
+    where luserid = #{luserid,jdbcType=INTEGER}
+  </update>
+</mapper>

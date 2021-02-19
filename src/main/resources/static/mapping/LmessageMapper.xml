@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangjing921.mapper.LmessageMapper">
+  <resultMap id="BaseResultMap" type="cn.wangjing921.domain.po.Lmessage">
+    <id column="lmid" jdbcType="INTEGER" property="lmid" />
+    <result column="toluid" jdbcType="INTEGER" property="toluid" />
+    <result column="fromluid" jdbcType="INTEGER" property="fromluid" />
+    <result column="lmsg" jdbcType="VARCHAR" property="lmsg" />
+    <result column="senddate" jdbcType="TIMESTAMP" property="senddate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lmid, toluid, fromluid, lmsg, senddate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lmessage
+    where lmid = #{lmid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lmessage
+    where lmid = #{lmid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="lmid" keyProperty="lmid" parameterType="cn.wangjing921.domain.po.Lmessage" useGeneratedKeys="true">
+    insert into lmessage (toluid, fromluid, lmsg, 
+      senddate)
+    values (#{toluid,jdbcType=INTEGER}, #{fromluid,jdbcType=INTEGER}, #{lmsg,jdbcType=VARCHAR}, 
+      #{senddate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="lmid" keyProperty="lmid" parameterType="cn.wangjing921.domain.po.Lmessage" useGeneratedKeys="true">
+    insert into lmessage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="toluid != null">
+        toluid,
+      </if>
+      <if test="fromluid != null">
+        fromluid,
+      </if>
+      <if test="lmsg != null">
+        lmsg,
+      </if>
+      <if test="senddate != null">
+        senddate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="toluid != null">
+        #{toluid,jdbcType=INTEGER},
+      </if>
+      <if test="fromluid != null">
+        #{fromluid,jdbcType=INTEGER},
+      </if>
+      <if test="lmsg != null">
+        #{lmsg,jdbcType=VARCHAR},
+      </if>
+      <if test="senddate != null">
+        #{senddate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.wangjing921.domain.po.Lmessage">
+    update lmessage
+    <set>
+      <if test="toluid != null">
+        toluid = #{toluid,jdbcType=INTEGER},
+      </if>
+      <if test="fromluid != null">
+        fromluid = #{fromluid,jdbcType=INTEGER},
+      </if>
+      <if test="lmsg != null">
+        lmsg = #{lmsg,jdbcType=VARCHAR},
+      </if>
+      <if test="senddate != null">
+        senddate = #{senddate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where lmid = #{lmid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.wangjing921.domain.po.Lmessage">
+    update lmessage
+    set toluid = #{toluid,jdbcType=INTEGER},
+      fromluid = #{fromluid,jdbcType=INTEGER},
+      lmsg = #{lmsg,jdbcType=VARCHAR},
+      senddate = #{senddate,jdbcType=TIMESTAMP}
+    where lmid = #{lmid,jdbcType=INTEGER}
+  </update>
+</mapper>

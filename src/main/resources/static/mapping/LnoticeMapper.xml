@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangjing921.mapper.LnoticeMapper">
+  <resultMap id="BaseResultMap" type="cn.wangjing921.domain.po.Lnotice">
+    <id column="lnoticeid" jdbcType="INTEGER" property="lnoticeid" />
+    <result column="lnoticemsg" jdbcType="VARCHAR" property="lnoticemsg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lnoticeid, lnoticemsg
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lnotice
+    where lnoticeid = #{lnoticeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lnotice
+    where lnoticeid = #{lnoticeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="lnoticeid" keyProperty="lnoticeid" parameterType="cn.wangjing921.domain.po.Lnotice" useGeneratedKeys="true">
+    insert into lnotice (lnoticemsg)
+    values (#{lnoticemsg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="lnoticeid" keyProperty="lnoticeid" parameterType="cn.wangjing921.domain.po.Lnotice" useGeneratedKeys="true">
+    insert into lnotice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lnoticemsg != null">
+        lnoticemsg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lnoticemsg != null">
+        #{lnoticemsg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.wangjing921.domain.po.Lnotice">
+    update lnotice
+    <set>
+      <if test="lnoticemsg != null">
+        lnoticemsg = #{lnoticemsg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lnoticeid = #{lnoticeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.wangjing921.domain.po.Lnotice">
+    update lnotice
+    set lnoticemsg = #{lnoticemsg,jdbcType=VARCHAR}
+    where lnoticeid = #{lnoticeid,jdbcType=INTEGER}
+  </update>
+</mapper>

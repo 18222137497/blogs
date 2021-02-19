@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangjing921.mapper.LblogtypeMapper">
+  <resultMap id="BaseResultMap" type="cn.wangjing921.domain.po.Lblogtype">
+    <id column="lblogtypeid" jdbcType="INTEGER" property="lblogtypeid" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lblogtypeid, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lblogtype
+    where lblogtypeid = #{lblogtypeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lblogtype
+    where lblogtypeid = #{lblogtypeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="lblogtypeid" keyProperty="lblogtypeid" parameterType="cn.wangjing921.domain.po.Lblogtype" useGeneratedKeys="true">
+    insert into lblogtype (remark)
+    values (#{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="lblogtypeid" keyProperty="lblogtypeid" parameterType="cn.wangjing921.domain.po.Lblogtype" useGeneratedKeys="true">
+    insert into lblogtype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.wangjing921.domain.po.Lblogtype">
+    update lblogtype
+    <set>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lblogtypeid = #{lblogtypeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.wangjing921.domain.po.Lblogtype">
+    update lblogtype
+    set remark = #{remark,jdbcType=VARCHAR}
+    where lblogtypeid = #{lblogtypeid,jdbcType=INTEGER}
+  </update>
+</mapper>

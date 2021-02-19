@@ -1,13 +1,28 @@
 package cn.wangjing921.domain.po;
 
+import java.io.Serializable;
 import lombok.Data;
 
 /**
  * 收藏表
+ * @author afflatus
  */
 @Data
-public class Lcollect {
+public class Lcollect implements Serializable {
+    /**
+     * 收藏表主键，没有实际意义，特定条件下能提高查询效率
+     */
     private Integer lcid;
-    private Integer luid;//用户
-    private Integer lbid;//博客
+
+    /**
+     * 用户id
+     */
+    private Integer luid;
+
+    /**
+     * 博客id
+     */
+    private Integer lbid;
+
+    private static final long serialVersionUID = 1L;
 }

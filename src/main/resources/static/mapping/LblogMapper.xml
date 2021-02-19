@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangjing921.mapper.LblogMapper">
+  <resultMap id="BaseResultMap" type="cn.wangjing921.domain.po.Lblog">
+    <id column="lblogid" jdbcType="INTEGER" property="lblogid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="lbloguid" jdbcType="INTEGER" property="lbloguid" />
+    <result column="lblognice" jdbcType="INTEGER" property="lblognice" />
+    <result column="lbogcomment" jdbcType="INTEGER" property="lbogcomment" />
+    <result column="blogurl" jdbcType="VARCHAR" property="blogurl" />
+    <result column="lbloglook" jdbcType="INTEGER" property="lbloglook" />
+    <result column="sendtime" jdbcType="TIMESTAMP" property="sendtime" />
+    <result column="live" jdbcType="INTEGER" property="live" />
+    <result column="classifyid" jdbcType="INTEGER" property="classifyid" />
+    <result column="remark" jdbcType="INTEGER" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lblogid, title, lbloguid, lblognice, lbogcomment, blogurl, lbloglook, sendtime, live, 
+    classifyid, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lblog
+    where lblogid = #{lblogid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lblog
+    where lblogid = #{lblogid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="lblogid" keyProperty="lblogid" parameterType="cn.wangjing921.domain.po.Lblog" useGeneratedKeys="true">
+    insert into lblog (title, lbloguid, lblognice, 
+      lbogcomment, blogurl, lbloglook, 
+      sendtime, live, classifyid, 
+      remark)
+    values (#{title,jdbcType=VARCHAR}, #{lbloguid,jdbcType=INTEGER}, #{lblognice,jdbcType=INTEGER}, 
+      #{lbogcomment,jdbcType=INTEGER}, #{blogurl,jdbcType=VARCHAR}, #{lbloglook,jdbcType=INTEGER}, 
+      #{sendtime,jdbcType=TIMESTAMP}, #{live,jdbcType=INTEGER}, #{classifyid,jdbcType=INTEGER}, 
+      #{remark,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="lblogid" keyProperty="lblogid" parameterType="cn.wangjing921.domain.po.Lblog" useGeneratedKeys="true">
+    insert into lblog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="lbloguid != null">
+        lbloguid,
+      </if>
+      <if test="lblognice != null">
+        lblognice,
+      </if>
+      <if test="lbogcomment != null">
+        lbogcomment,
+      </if>
+      <if test="blogurl != null">
+        blogurl,
+      </if>
+      <if test="lbloglook != null">
+        lbloglook,
+      </if>
+      <if test="sendtime != null">
+        sendtime,
+      </if>
+      <if test="live != null">
+        live,
+      </if>
+      <if test="classifyid != null">
+        classifyid,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="lbloguid != null">
+        #{lbloguid,jdbcType=INTEGER},
+      </if>
+      <if test="lblognice != null">
+        #{lblognice,jdbcType=INTEGER},
+      </if>
+      <if test="lbogcomment != null">
+        #{lbogcomment,jdbcType=INTEGER},
+      </if>
+      <if test="blogurl != null">
+        #{blogurl,jdbcType=VARCHAR},
+      </if>
+      <if test="lbloglook != null">
+        #{lbloglook,jdbcType=INTEGER},
+      </if>
+      <if test="sendtime != null">
+        #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="live != null">
+        #{live,jdbcType=INTEGER},
+      </if>
+      <if test="classifyid != null">
+        #{classifyid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.wangjing921.domain.po.Lblog">
+    update lblog
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="lbloguid != null">
+        lbloguid = #{lbloguid,jdbcType=INTEGER},
+      </if>
+      <if test="lblognice != null">
+        lblognice = #{lblognice,jdbcType=INTEGER},
+      </if>
+      <if test="lbogcomment != null">
+        lbogcomment = #{lbogcomment,jdbcType=INTEGER},
+      </if>
+      <if test="blogurl != null">
+        blogurl = #{blogurl,jdbcType=VARCHAR},
+      </if>
+      <if test="lbloglook != null">
+        lbloglook = #{lbloglook,jdbcType=INTEGER},
+      </if>
+      <if test="sendtime != null">
+        sendtime = #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="live != null">
+        live = #{live,jdbcType=INTEGER},
+      </if>
+      <if test="classifyid != null">
+        classifyid = #{classifyid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lblogid = #{lblogid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.wangjing921.domain.po.Lblog">
+    update lblog
+    set title = #{title,jdbcType=VARCHAR},
+      lbloguid = #{lbloguid,jdbcType=INTEGER},
+      lblognice = #{lblognice,jdbcType=INTEGER},
+      lbogcomment = #{lbogcomment,jdbcType=INTEGER},
+      blogurl = #{blogurl,jdbcType=VARCHAR},
+      lbloglook = #{lbloglook,jdbcType=INTEGER},
+      sendtime = #{sendtime,jdbcType=TIMESTAMP},
+      live = #{live,jdbcType=INTEGER},
+      classifyid = #{classifyid,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=INTEGER}
+    where lblogid = #{lblogid,jdbcType=INTEGER}
+  </update>
+</mapper>

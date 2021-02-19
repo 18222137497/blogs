@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangjing921.mapper.LcollectMapper">
+  <resultMap id="BaseResultMap" type="cn.wangjing921.domain.po.Lcollect">
+    <id column="lcid" jdbcType="INTEGER" property="lcid" />
+    <result column="luid" jdbcType="INTEGER" property="luid" />
+    <result column="lbid" jdbcType="INTEGER" property="lbid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    lcid, luid, lbid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lcollect
+    where lcid = #{lcid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lcollect
+    where lcid = #{lcid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="lcid" keyProperty="lcid" parameterType="cn.wangjing921.domain.po.Lcollect" useGeneratedKeys="true">
+    insert into lcollect (luid, lbid)
+    values (#{luid,jdbcType=INTEGER}, #{lbid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="lcid" keyProperty="lcid" parameterType="cn.wangjing921.domain.po.Lcollect" useGeneratedKeys="true">
+    insert into lcollect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="luid != null">
+        luid,
+      </if>
+      <if test="lbid != null">
+        lbid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="luid != null">
+        #{luid,jdbcType=INTEGER},
+      </if>
+      <if test="lbid != null">
+        #{lbid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.wangjing921.domain.po.Lcollect">
+    update lcollect
+    <set>
+      <if test="luid != null">
+        luid = #{luid,jdbcType=INTEGER},
+      </if>
+      <if test="lbid != null">
+        lbid = #{lbid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lcid = #{lcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.wangjing921.domain.po.Lcollect">
+    update lcollect
+    set luid = #{luid,jdbcType=INTEGER},
+      lbid = #{lbid,jdbcType=INTEGER}
+    where lcid = #{lcid,jdbcType=INTEGER}
+  </update>
+</mapper>

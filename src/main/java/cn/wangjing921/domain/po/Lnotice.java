@@ -1,12 +1,23 @@
 package cn.wangjing921.domain.po;
 
+import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 上传博客注意事项
+ * 上传博客的注意事项
+ * @author afflatus
  */
 @Data
-public class Lnotice {
-    private Integer lnoticeid;//事项id
-    private String lnoticemsg;//事项内容
+public class Lnotice implements Serializable {
+    /**
+     * 主键
+     */
+    private Integer lnoticeid;
+
+    /**
+     * 内容
+     */
+    private String lnoticemsg;
+
+    private static final long serialVersionUID = 1L;
 }

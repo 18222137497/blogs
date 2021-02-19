@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wangjing921.mapper.LtopnoticeMapper">
+  <resultMap id="BaseResultMap" type="cn.wangjing921.domain.po.Ltopnotice">
+    <id column="ltopnoticeid" jdbcType="INTEGER" property="ltopnoticeid" />
+    <result column="ltopnoticeimg" jdbcType="VARCHAR" property="ltopnoticeimg" />
+    <result column="ltopnoticetitle" jdbcType="VARCHAR" property="ltopnoticetitle" />
+    <result column="ltopnoticedata" jdbcType="VARCHAR" property="ltopnoticedata" />
+    <result column="sendtime" jdbcType="TIMESTAMP" property="sendtime" />
+    <result column="ltopnoticeurl" jdbcType="VARCHAR" property="ltopnoticeurl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ltopnoticeid, ltopnoticeimg, ltopnoticetitle, ltopnoticedata, sendtime, ltopnoticeurl
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ltopnotice
+    where ltopnoticeid = #{ltopnoticeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ltopnotice
+    where ltopnoticeid = #{ltopnoticeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="ltopnoticeid" keyProperty="ltopnoticeid" parameterType="cn.wangjing921.domain.po.Ltopnotice" useGeneratedKeys="true">
+    insert into ltopnotice (ltopnoticeimg, ltopnoticetitle, ltopnoticedata, 
+      sendtime, ltopnoticeurl)
+    values (#{ltopnoticeimg,jdbcType=VARCHAR}, #{ltopnoticetitle,jdbcType=VARCHAR}, #{ltopnoticedata,jdbcType=VARCHAR}, 
+      #{sendtime,jdbcType=TIMESTAMP}, #{ltopnoticeurl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="ltopnoticeid" keyProperty="ltopnoticeid" parameterType="cn.wangjing921.domain.po.Ltopnotice" useGeneratedKeys="true">
+    insert into ltopnotice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ltopnoticeimg != null">
+        ltopnoticeimg,
+      </if>
+      <if test="ltopnoticetitle != null">
+        ltopnoticetitle,
+      </if>
+      <if test="ltopnoticedata != null">
+        ltopnoticedata,
+      </if>
+      <if test="sendtime != null">
+        sendtime,
+      </if>
+      <if test="ltopnoticeurl != null">
+        ltopnoticeurl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ltopnoticeimg != null">
+        #{ltopnoticeimg,jdbcType=VARCHAR},
+      </if>
+      <if test="ltopnoticetitle != null">
+        #{ltopnoticetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ltopnoticedata != null">
+        #{ltopnoticedata,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null">
+        #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ltopnoticeurl != null">
+        #{ltopnoticeurl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.wangjing921.domain.po.Ltopnotice">
+    update ltopnotice
+    <set>
+      <if test="ltopnoticeimg != null">
+        ltopnoticeimg = #{ltopnoticeimg,jdbcType=VARCHAR},
+      </if>
+      <if test="ltopnoticetitle != null">
+        ltopnoticetitle = #{ltopnoticetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="ltopnoticedata != null">
+        ltopnoticedata = #{ltopnoticedata,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null">
+        sendtime = #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ltopnoticeurl != null">
+        ltopnoticeurl = #{ltopnoticeurl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ltopnoticeid = #{ltopnoticeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.wangjing921.domain.po.Ltopnotice">
+    update ltopnotice
+    set ltopnoticeimg = #{ltopnoticeimg,jdbcType=VARCHAR},
+      ltopnoticetitle = #{ltopnoticetitle,jdbcType=VARCHAR},
+      ltopnoticedata = #{ltopnoticedata,jdbcType=VARCHAR},
+      sendtime = #{sendtime,jdbcType=TIMESTAMP},
+      ltopnoticeurl = #{ltopnoticeurl,jdbcType=VARCHAR}
+    where ltopnoticeid = #{ltopnoticeid,jdbcType=INTEGER}
+  </update>
+</mapper>
