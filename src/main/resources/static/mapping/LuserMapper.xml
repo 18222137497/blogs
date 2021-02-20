@@ -5,15 +5,15 @@
     <id column="luserid" jdbcType="INTEGER" property="luserid" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="phone" jdbcType="INTEGER" property="phone" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="blognum" jdbcType="INTEGER" property="blognum" />
     <result column="look" jdbcType="INTEGER" property="look" />
     <result column="label" jdbcType="VARCHAR" property="label" />
     <result column="nice" jdbcType="INTEGER" property="nice" />
     <result column="fans" jdbcType="INTEGER" property="fans" />
-    <result column="nickname" jdbcType="INTEGER" property="nickname" />
-    <result column="photo" jdbcType="INTEGER" property="photo" />
-    <result column="live" jdbcType="INTEGER" property="live" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="live" jdbcType="INTEGER" property="live" javaType="cn.wangjing921.custenum.domainTypeEnum.StateEnum" typeHandler="cn.wangjing921.custenum.baseEnum.IBaseEnumHandler" />
     <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
     <result column="deldate" jdbcType="TIMESTAMP" property="deldate" />
     <result column="livenum" jdbcType="INTEGER" property="livenum" />
@@ -38,10 +38,10 @@
       nice, fans, nickname, 
       photo, live, createdate, 
       deldate, livenum)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, 
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
       #{blognum,jdbcType=INTEGER}, #{look,jdbcType=INTEGER}, #{label,jdbcType=VARCHAR}, 
-      #{nice,jdbcType=INTEGER}, #{fans,jdbcType=INTEGER}, #{nickname,jdbcType=INTEGER}, 
-      #{photo,jdbcType=INTEGER}, #{live,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{nice,jdbcType=INTEGER}, #{fans,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR},
+      #{photo,jdbcType=VARCHAR}, #{live,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler}, #{createdate,jdbcType=TIMESTAMP},
       #{deldate,jdbcType=TIMESTAMP}, #{livenum,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" keyColumn="luserid" keyProperty="luserid" parameterType="cn.wangjing921.domain.po.Luser" useGeneratedKeys="true">
@@ -98,7 +98,7 @@
         #{password,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="blognum != null">
         #{blognum,jdbcType=INTEGER},
@@ -116,13 +116,13 @@
         #{fans,jdbcType=INTEGER},
       </if>
       <if test="nickname != null">
-        #{nickname,jdbcType=INTEGER},
+        #{nickname,jdbcType=VARCHAR},
       </if>
       <if test="photo != null">
-        #{photo,jdbcType=INTEGER},
+        #{photo,jdbcType=VARCHAR},
       </if>
       <if test="live != null">
-        #{live,jdbcType=INTEGER},
+        #{live,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
       </if>
       <if test="createdate != null">
         #{createdate,jdbcType=TIMESTAMP},
@@ -145,7 +145,7 @@
         `password` = #{password,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="blognum != null">
         blognum = #{blognum,jdbcType=INTEGER},
@@ -163,13 +163,13 @@
         fans = #{fans,jdbcType=INTEGER},
       </if>
       <if test="nickname != null">
-        nickname = #{nickname,jdbcType=INTEGER},
+        nickname = #{nickname,jdbcType=VARCHAR},
       </if>
       <if test="photo != null">
-        photo = #{photo,jdbcType=INTEGER},
+        photo = #{photo,jdbcType=VARCHAR},
       </if>
       <if test="live != null">
-        live = #{live,jdbcType=INTEGER},
+        live = #{live,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
       </if>
       <if test="createdate != null">
         createdate = #{createdate,jdbcType=TIMESTAMP},
@@ -187,15 +187,15 @@
     update luser
     set username = #{username,jdbcType=VARCHAR},
       `password` = #{password,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
       blognum = #{blognum,jdbcType=INTEGER},
       look = #{look,jdbcType=INTEGER},
       `label` = #{label,jdbcType=VARCHAR},
       nice = #{nice,jdbcType=INTEGER},
       fans = #{fans,jdbcType=INTEGER},
-      nickname = #{nickname,jdbcType=INTEGER},
-      photo = #{photo,jdbcType=INTEGER},
-      live = #{live,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      live = #{live,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
       createdate = #{createdate,jdbcType=TIMESTAMP},
       deldate = #{deldate,jdbcType=TIMESTAMP},
       livenum = #{livenum,jdbcType=INTEGER}

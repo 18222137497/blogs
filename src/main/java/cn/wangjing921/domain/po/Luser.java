@@ -2,6 +2,8 @@ package cn.wangjing921.domain.po;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import cn.wangjing921.custenum.domainTypeEnum.StateEnum;
 import lombok.Data;
 
 /**
@@ -28,7 +30,7 @@ public class Luser implements Serializable {
     /**
      * 手机号
      */
-    private Integer phone;
+    private String phone;
 
     /**
      * 发布博客数
@@ -58,17 +60,17 @@ public class Luser implements Serializable {
     /**
      * 昵称
      */
-    private Integer nickname;
+    private String nickname;
 
     /**
      * 头像(有默认值，需要新增头像修改功能)
      */
-    private Integer photo;
+    private String photo;
 
     /**
      * 激活/开启状态(0未激活1正常2禁用)
      */
-    private Integer live;
+    private StateEnum live;
 
     /**
      * 创建时间

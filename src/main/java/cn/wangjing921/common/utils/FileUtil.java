@@ -4,12 +4,34 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.util.Base64;
+import java.util.List;
 
 /**
  * 文件工具
  * @author afflatus
  */
 public class FileUtil {
+
+    /**
+     * 遍历文件夹中文件的类路径，不带.java后缀
+     * @param f 文件夹名
+     * @param list 容器
+     * @return
+     */
+    public static void scanFile(File f, List<String> list) {
+        File[] g=f.listFiles();
+        for (File z:g) {
+            if (z.isFile()) {
+                String fileName0 = z.getPath().split("\\.")[0];
+                String fileName1 = fileName0.replace('\\', '.');
+                String classPath = fileName1.split("java.")[1];
+                list.add(classPath);
+            }
+            if (z.isDirectory()) {
+                scanFile(z,list);
+            }
+        }
+    }
 
     /**
      * base64字符转换成file
@@ -19,7 +41,7 @@ public class FileUtil {
      * @param fileName 保存的文件名
      * @return file
      */
-    public File base64ToFile(String destPath, String base64, String fileName) {
+    public static File base64ToFile(String destPath, String base64, String fileName) {
         File file = null;
         //创建文件目录
         String filePath = destPath;
@@ -62,7 +84,7 @@ public class FileUtil {
      * @param path
      * @return
      */
-    public String fileToBase64(String path) {
+    public static String fileToBase64(String path) {
         String base64 = null;
         InputStream in = null;
         try {
@@ -90,7 +112,7 @@ public class FileUtil {
      *
      * @return File类型文件
      */
-    public File multipartFileToFile(MultipartFile multipartFile, String filePath, String fileName) {
+    public static File multipartFileToFile(MultipartFile multipartFile, String filePath, String fileName) {
         File f = null;
         File dir = new File(filePath);
         if (!dir.exists() && !dir.isDirectory()) {
