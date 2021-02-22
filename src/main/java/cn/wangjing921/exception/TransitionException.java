@@ -4,6 +4,7 @@ import cn.wangjing921.exception.baseException.BaseException;
 
 /**
  * 类型转换异常
+ * @author afflatus
  */
 public class TransitionException extends BaseException {
 

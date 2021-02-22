@@ -2,11 +2,13 @@ package cn.wangjing921.mapper;
 
 
 import cn.wangjing921.domain.po.Lclassify;
+import org.springframework.stereotype.Repository;
 
 /**
  * 分类表
  * @author afflatus
  */
+@Repository
 public interface LclassifyMapper {
     int deleteByPrimaryKey(Integer lclassifyid);
 

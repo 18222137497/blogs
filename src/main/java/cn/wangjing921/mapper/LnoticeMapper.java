@@ -2,11 +2,13 @@ package cn.wangjing921.mapper;
 
 
 import cn.wangjing921.domain.po.Lnotice;
+import org.springframework.stereotype.Repository;
 
 /**
  * 上传博客的注意事项
  * @author afflatus
  */
+@Repository
 public interface LnoticeMapper {
     int deleteByPrimaryKey(Integer lnoticeid);
 

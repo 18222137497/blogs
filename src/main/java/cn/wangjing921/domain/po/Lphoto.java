@@ -5,6 +5,7 @@ import lombok.Data;
 
 /**
  * 头像表
+ * 遍历头像列表，点击-》id-》修改用户表url
  * @author afflatus
  */
 @Data

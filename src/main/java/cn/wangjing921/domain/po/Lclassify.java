@@ -4,7 +4,7 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 分类表
+ * 博客分类表
  * @author afflatus
  */
 @Data

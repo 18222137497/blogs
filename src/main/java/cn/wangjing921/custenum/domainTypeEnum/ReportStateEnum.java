@@ -3,19 +3,19 @@ package cn.wangjing921.custenum.domainTypeEnum;
 import cn.wangjing921.custenum.baseEnum.IBaseEnumInterface;
 
 /**
- * 用户激活状态
+ * 举报受理状态
  * @author afflatus
  */
-public enum StateEnum implements IBaseEnumInterface<Integer> {
-    UNACTIVATED(0,"未激活"),
-    LIVE(1,"正常"),
-    DIE(2,"黑名单");
+public enum ReportStateEnum implements IBaseEnumInterface<Integer> {
+
+    NO(0,"未受理"),
+    Yes(1,"已受理");
 
     private final Integer value;
 
     private final String title;
 
-    private StateEnum(Integer value, String title) {
+    private ReportStateEnum(Integer value, String title) {
         this.value = value;
         this.title = title;
     }
@@ -48,11 +48,12 @@ public enum StateEnum implements IBaseEnumInterface<Integer> {
      * @return
      */
     public static String wonTitle(Integer value) {
-        for (StateEnum ot : values()) {
+        for (ReportStateEnum ot : values()) {
             if (ot.getValue().equals(value)) {
                 return ot.getTitle();
             }
         }
         return null;
     }
+
 }

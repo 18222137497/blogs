@@ -8,12 +8,14 @@
     <result column="fromuid" jdbcType="INTEGER" property="fromuid" />
     <result column="sendtime" jdbcType="TIMESTAMP" property="sendtime" />
     <result column="lreporttype" jdbcType="INTEGER" property="lreporttype" />
+    <result column="state" jdbcType="INTEGER" property="state" javaType="cn.wangjing921.custenum.domainTypeEnum.ReportStateEnum" typeHandler="cn.wangjing921.custenum.baseEnum.IBaseEnumHandler" />
+    <result column="return_msg" jdbcType="VARCHAR" property="returnMsg" />
   </resultMap>
   <sql id="Base_Column_List">
-    lreportid, lreportmsg, toblogid, fromuid, sendtime, lreporttype
+    lreportid, lreportmsg, toblogid, fromuid, sendtime, lreporttype, `state`, return_msg
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from lreport
     where lreportid = #{lreportid,jdbcType=INTEGER}
@@ -23,10 +25,12 @@
     where lreportid = #{lreportid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="lreportid" keyProperty="lreportid" parameterType="cn.wangjing921.domain.po.Lreport" useGeneratedKeys="true">
-    insert into lreport (lreportmsg, toblogid, fromuid, 
-      sendtime, lreporttype)
-    values (#{lreportmsg,jdbcType=VARCHAR}, #{toblogid,jdbcType=INTEGER}, #{fromuid,jdbcType=INTEGER}, 
-      #{sendtime,jdbcType=TIMESTAMP}, #{lreporttype,jdbcType=INTEGER})
+    insert into lreport (lreportmsg, toblogid, fromuid,
+                         sendtime, lreporttype, `state`,
+                         return_msg)
+    values (#{lreportmsg,jdbcType=VARCHAR}, #{toblogid,jdbcType=INTEGER}, #{fromuid,jdbcType=INTEGER},
+            #{sendtime,jdbcType=TIMESTAMP}, #{lreporttype,jdbcType=INTEGER}, #{state,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
+            #{returnMsg,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="lreportid" keyProperty="lreportid" parameterType="cn.wangjing921.domain.po.Lreport" useGeneratedKeys="true">
     insert into lreport
@@ -46,6 +50,12 @@
       <if test="lreporttype != null">
         lreporttype,
       </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="returnMsg != null">
+        return_msg,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="lreportmsg != null">
@@ -62,6 +72,12 @@
       </if>
       <if test="lreporttype != null">
         #{lreporttype,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
+      </if>
+      <if test="returnMsg != null">
+        #{returnMsg,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -83,16 +99,24 @@
       <if test="lreporttype != null">
         lreporttype = #{lreporttype,jdbcType=INTEGER},
       </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
+      </if>
+      <if test="returnMsg != null">
+        return_msg = #{returnMsg,jdbcType=VARCHAR},
+      </if>
     </set>
     where lreportid = #{lreportid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.wangjing921.domain.po.Lreport">
     update lreport
     set lreportmsg = #{lreportmsg,jdbcType=VARCHAR},
-      toblogid = #{toblogid,jdbcType=INTEGER},
-      fromuid = #{fromuid,jdbcType=INTEGER},
-      sendtime = #{sendtime,jdbcType=TIMESTAMP},
-      lreporttype = #{lreporttype,jdbcType=INTEGER}
+        toblogid = #{toblogid,jdbcType=INTEGER},
+        fromuid = #{fromuid,jdbcType=INTEGER},
+        sendtime = #{sendtime,jdbcType=TIMESTAMP},
+        lreporttype = #{lreporttype,jdbcType=INTEGER},
+        `state` = #{state,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
+        return_msg = #{returnMsg,jdbcType=VARCHAR}
     where lreportid = #{lreportid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -2,6 +2,7 @@ package cn.wangjing921.exception.baseException;
 
 /**
  * 基类异常类型
+ * @author afflatus
  */
 public class BaseException extends RuntimeException{
     /**

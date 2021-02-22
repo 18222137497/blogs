@@ -1,6 +1,6 @@
 package cn.wangjing921.custenum.baseEnum;
 
-import cn.wangjing921.custenum.domainTypeEnum.StateEnum;
+import cn.wangjing921.custenum.domainTypeEnum.*;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedTypes;
@@ -10,7 +10,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@MappedTypes(value = {StateEnum.class})//没有参数也行。。。。。。原本要填对应的枚举数组的
+/**
+ * 数据库信息转枚举
+ * @param <T> 枚举的value类型
+ * @author afflatus
+ */
+@MappedTypes(value = {LVEnum.class, UserStateEnum.class, BlogStateEnum.class, BlogRemarkEnum.class, ReportStateEnum.class})//没有参数也行。。。。。。原本要填对应的枚举数组的
 public class IBaseEnumHandler<T extends IBaseEnumInterface> extends BaseTypeHandler<T> {
     private Class<T> type;
     private T[] enums;

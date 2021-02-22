@@ -3,7 +3,8 @@ package cn.wangjing921.domain.po;
 import java.io.Serializable;
 import java.util.Date;
 
-import cn.wangjing921.custenum.domainTypeEnum.StateEnum;
+import cn.wangjing921.custenum.domainTypeEnum.LVEnum;
+import cn.wangjing921.custenum.domainTypeEnum.UserStateEnum;
 import lombok.Data;
 
 /**
@@ -70,7 +71,7 @@ public class Luser implements Serializable {
     /**
      * 激活/开启状态(0未激活1正常2禁用)
      */
-    private StateEnum live;
+    private UserStateEnum live;
 
     /**
      * 创建时间
@@ -86,6 +87,11 @@ public class Luser implements Serializable {
      * 预留属性，活跃度
      */
     private Integer livenum;
+
+    /**
+     * 用户类型
+     */
+    private LVEnum LV;
 
     private static final long serialVersionUID = 1L;
 }

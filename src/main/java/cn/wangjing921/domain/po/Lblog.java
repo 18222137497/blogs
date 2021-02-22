@@ -2,6 +2,9 @@ package cn.wangjing921.domain.po;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import cn.wangjing921.custenum.domainTypeEnum.BlogRemarkEnum;
+import cn.wangjing921.custenum.domainTypeEnum.BlogStateEnum;
 import lombok.Data;
 
 /**
@@ -54,7 +57,7 @@ public class Lblog implements Serializable {
     /**
      * 是否过审，0未过，1过了
      */
-    private Integer live;
+    private BlogStateEnum live;
 
     /**
      * 分类
@@ -62,9 +65,9 @@ public class Lblog implements Serializable {
     private Integer classifyid;
 
     /**
-     * 备注，对应精品，一致好评等
+     * 备注，对应精品，置顶
      */
-    private Integer remark;
+    private BlogRemarkEnum remark;
 
     private static final long serialVersionUID = 1L;
 

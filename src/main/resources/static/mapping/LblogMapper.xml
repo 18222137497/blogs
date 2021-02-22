@@ -10,9 +10,9 @@
     <result column="blogurl" jdbcType="VARCHAR" property="blogurl" />
     <result column="lbloglook" jdbcType="INTEGER" property="lbloglook" />
     <result column="sendtime" jdbcType="TIMESTAMP" property="sendtime" />
-    <result column="live" jdbcType="INTEGER" property="live" />
+    <result column="live" jdbcType="INTEGER" property="live" javaType="cn.wangjing921.custenum.domainTypeEnum.BlogStateEnum" typeHandler="cn.wangjing921.custenum.baseEnum.IBaseEnumHandler"/>
     <result column="classifyid" jdbcType="INTEGER" property="classifyid" />
-    <result column="remark" jdbcType="INTEGER" property="remark" />
+    <result column="remark" jdbcType="INTEGER" property="remark" javaType="cn.wangjing921.custenum.domainTypeEnum.BlogRemarkEnum" typeHandler="cn.wangjing921.custenum.baseEnum.IBaseEnumHandler"/>
   </resultMap>
   <sql id="Base_Column_List">
     lblogid, title, lbloguid, lblognice, lbogcomment, blogurl, lbloglook, sendtime, live, 
@@ -35,8 +35,8 @@
       remark)
     values (#{title,jdbcType=VARCHAR}, #{lbloguid,jdbcType=INTEGER}, #{lblognice,jdbcType=INTEGER}, 
       #{lbogcomment,jdbcType=INTEGER}, #{blogurl,jdbcType=VARCHAR}, #{lbloglook,jdbcType=INTEGER}, 
-      #{sendtime,jdbcType=TIMESTAMP}, #{live,jdbcType=INTEGER}, #{classifyid,jdbcType=INTEGER}, 
-      #{remark,jdbcType=INTEGER})
+      #{sendtime,jdbcType=TIMESTAMP}, #{live,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler}, #{classifyid,jdbcType=INTEGER},
+      #{remark,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler})
   </insert>
   <insert id="insertSelective" keyColumn="lblogid" keyProperty="lblogid" parameterType="cn.wangjing921.domain.po.Lblog" useGeneratedKeys="true">
     insert into lblog
@@ -95,13 +95,13 @@
         #{sendtime,jdbcType=TIMESTAMP},
       </if>
       <if test="live != null">
-        #{live,jdbcType=INTEGER},
+        #{live,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
       </if>
       <if test="classifyid != null">
         #{classifyid,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
-        #{remark,jdbcType=INTEGER},
+        #{remark,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
       </if>
     </trim>
   </insert>
@@ -130,13 +130,13 @@
         sendtime = #{sendtime,jdbcType=TIMESTAMP},
       </if>
       <if test="live != null">
-        live = #{live,jdbcType=INTEGER},
+        live = #{live,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
       </if>
       <if test="classifyid != null">
         classifyid = #{classifyid,jdbcType=INTEGER},
       </if>
       <if test="remark != null">
-        remark = #{remark,jdbcType=INTEGER},
+        remark = #{remark,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
       </if>
     </set>
     where lblogid = #{lblogid,jdbcType=INTEGER}
@@ -150,9 +150,9 @@
       blogurl = #{blogurl,jdbcType=VARCHAR},
       lbloglook = #{lbloglook,jdbcType=INTEGER},
       sendtime = #{sendtime,jdbcType=TIMESTAMP},
-      live = #{live,jdbcType=INTEGER},
+      live = #{live,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
       classifyid = #{classifyid,jdbcType=INTEGER},
-      remark = #{remark,jdbcType=INTEGER}
+      remark = #{remark,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler}
     where lblogid = #{lblogid,jdbcType=INTEGER}
   </update>
 </mapper>

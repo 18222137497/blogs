@@ -12,6 +12,7 @@ import java.util.HashMap;
 /**
  * 枚举类型数据返回前端的处理
  * 库->程序
+ * @author afflatus
  */
 @Slf4j
 public class JsonEnumSerializer extends JsonSerializer<IBaseEnumInterface> {

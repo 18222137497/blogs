@@ -2,11 +2,13 @@ package cn.wangjing921.mapper;
 
 
 import cn.wangjing921.domain.po.Lconcern;
+import org.springframework.stereotype.Repository;
 
 /**
  * 关注表
  * @author afflatus
  */
+@Repository
 public interface LconcernMapper {
     int deleteByPrimaryKey(Integer lconcernid);
 

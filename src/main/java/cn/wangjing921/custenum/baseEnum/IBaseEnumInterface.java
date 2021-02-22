@@ -7,7 +7,8 @@ import java.io.Serializable;
 
 /**
  * 枚举序列化接口
- * @param <T>
+ * @param <T> 枚举的value类型
+ * @author afflatus
  */
 @JsonSerialize(using = JsonSerializer.class)//json序列化
 public interface IBaseEnumInterface<T> extends Serializable {

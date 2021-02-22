@@ -13,14 +13,15 @@
     <result column="fans" jdbcType="INTEGER" property="fans" />
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
     <result column="photo" jdbcType="VARCHAR" property="photo" />
-    <result column="live" jdbcType="INTEGER" property="live" javaType="cn.wangjing921.custenum.domainTypeEnum.StateEnum" typeHandler="cn.wangjing921.custenum.baseEnum.IBaseEnumHandler" />
+    <result column="live" jdbcType="INTEGER" property="live" javaType="cn.wangjing921.custenum.domainTypeEnum.UserStateEnum" typeHandler="cn.wangjing921.custenum.baseEnum.IBaseEnumHandler" />
     <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
     <result column="deldate" jdbcType="TIMESTAMP" property="deldate" />
     <result column="livenum" jdbcType="INTEGER" property="livenum" />
+    <result column="LV" jdbcType="INTEGER" property="LV" javaType="cn.wangjing921.custenum.domainTypeEnum.LVEnum" typeHandler="cn.wangjing921.custenum.baseEnum.IBaseEnumHandler"/>
   </resultMap>
   <sql id="Base_Column_List">
     luserid, username, `password`, phone, blognum, look, `label`, nice, fans, nickname, 
-    photo, live, createdate, deldate, livenum
+    photo, live, createdate, deldate, livenum, LV
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -37,12 +38,12 @@
       blognum, look, `label`, 
       nice, fans, nickname, 
       photo, live, createdate, 
-      deldate, livenum)
+      deldate, livenum,LV)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
       #{blognum,jdbcType=INTEGER}, #{look,jdbcType=INTEGER}, #{label,jdbcType=VARCHAR}, 
       #{nice,jdbcType=INTEGER}, #{fans,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR},
       #{photo,jdbcType=VARCHAR}, #{live,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler}, #{createdate,jdbcType=TIMESTAMP},
-      #{deldate,jdbcType=TIMESTAMP}, #{livenum,jdbcType=INTEGER})
+      #{deldate,jdbcType=TIMESTAMP}, #{livenum,jdbcType=INTEGER}), #{LV,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler}
   </insert>
   <insert id="insertSelective" keyColumn="luserid" keyProperty="luserid" parameterType="cn.wangjing921.domain.po.Luser" useGeneratedKeys="true">
     insert into luser
@@ -89,6 +90,10 @@
       <if test="livenum != null">
         livenum,
       </if>
+      <if test="LV != null">
+        LV,
+      </if>
+
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="username != null">
@@ -132,6 +137,9 @@
       </if>
       <if test="livenum != null">
         #{livenum,jdbcType=INTEGER},
+      </if>
+      <if test="LV != null">
+        #{LV,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
       </if>
     </trim>
   </insert>
@@ -180,6 +188,9 @@
       <if test="livenum != null">
         livenum = #{livenum,jdbcType=INTEGER},
       </if>
+      <if test="LV != null">
+        LV = #{LV,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
+      </if>
     </set>
     where luserid = #{luserid,jdbcType=INTEGER}
   </update>
@@ -198,7 +209,8 @@
       live = #{live,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler},
       createdate = #{createdate,jdbcType=TIMESTAMP},
       deldate = #{deldate,jdbcType=TIMESTAMP},
-      livenum = #{livenum,jdbcType=INTEGER}
+      livenum = #{livenum,jdbcType=INTEGER},
+      LV = #{LV,jdbcType=INTEGER,typeHandler=cn.wangjing921.custenum.baseEnum.IBaseEnumHandler}
     where luserid = #{luserid,jdbcType=INTEGER}
   </update>
 </mapper>

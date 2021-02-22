@@ -2,11 +2,13 @@ package cn.wangjing921.mapper;
 
 
 import cn.wangjing921.domain.po.Lcollect;
+import org.springframework.stereotype.Repository;
 
 /**
  * 收藏表
  * @author afflatus
  */
+@Repository
 public interface LcollectMapper {
     int deleteByPrimaryKey(Integer lcid);
 

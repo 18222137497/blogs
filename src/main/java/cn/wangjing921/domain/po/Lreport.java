@@ -2,6 +2,8 @@ package cn.wangjing921.domain.po;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import cn.wangjing921.custenum.domainTypeEnum.ReportStateEnum;
 import lombok.Data;
 
 /**
@@ -39,6 +41,16 @@ public class Lreport implements Serializable {
      * 举报类型0博客，1评论
      */
     private Integer lreporttype;
+
+    /**
+     * 受理状态
+     */
+    private ReportStateEnum state;
+
+    /**
+     * 处理完的消息
+     */
+    private String returnMsg;
 
     private static final long serialVersionUID = 1L;
 }
