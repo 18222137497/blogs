@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>用户主页</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/myjs.js"></script>
+    <script th:src="@{/js/myjs.js}"></script>
 </head>
 <body>
 <div class="container">
@@ -15,7 +15,7 @@
         <div class="col-md-3 column">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <img alt="32x32" src="img/222.png" class="img-circle" height="32" width="32"/>
+                    <img alt="32x32" th:src="@{/img/222.png}" class="img-circle" height="32" width="32"/>
                     <b>老子大过天</b>
                     <span>&nbsp;&nbsp;<font color="navy">教师</font></span>
                 </div>

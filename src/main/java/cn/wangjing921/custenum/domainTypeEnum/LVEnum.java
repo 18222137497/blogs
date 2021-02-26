@@ -1,11 +1,18 @@
 package cn.wangjing921.custenum.domainTypeEnum;
 
 import cn.wangjing921.custenum.baseEnum.IBaseEnumInterface;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * 账号描述,用户类型
  * @author afflatus
  */
+@JsonDeserialize
+@JsonSerialize
 public enum LVEnum implements IBaseEnumInterface<Integer> {
     ORDINARY(0,"普通用户"),
     ADMIN(1,"管理员"),
@@ -20,7 +27,7 @@ public enum LVEnum implements IBaseEnumInterface<Integer> {
         this.value = value;
         this.title = title;
     }
-
+    @JsonValue
     public Integer getValue() {
         return value;
     }
@@ -48,7 +55,8 @@ public enum LVEnum implements IBaseEnumInterface<Integer> {
      * @param value
      * @return
      */
-    public static String wonTitle(Integer value) {
+    @JsonCreator
+    public static String wonTitle(@JsonProperty("value")Integer value) {
         for (LVEnum ot : values()) {
             if (ot.getValue().equals(value)) {
                 return ot.getTitle();

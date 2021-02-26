@@ -2,12 +2,16 @@ package cn.wangjing921.domain.pojo;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 响应体
  * @author afflatus
  */
 @Data
-public class Result<T> {
+public class Result<T> implements Serializable {
+
+    private static final long serialVersionUID = 680563015863493408L;
     /**
      * 状态码
      */

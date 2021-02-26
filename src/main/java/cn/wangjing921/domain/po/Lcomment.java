@@ -10,6 +10,7 @@ import lombok.Data;
  */
 @Data
 public class Lcomment implements Serializable {
+    private static final long serialVersionUID = 3051317291932740493L;
     /**
      * 主键，可起排序作用
      */
@@ -35,5 +36,4 @@ public class Lcomment implements Serializable {
      */
     private Integer toblogid;
 
-    private static final long serialVersionUID = 1L;
 }

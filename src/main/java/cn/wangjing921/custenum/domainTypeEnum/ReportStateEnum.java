@@ -1,11 +1,18 @@
 package cn.wangjing921.custenum.domainTypeEnum;
 
 import cn.wangjing921.custenum.baseEnum.IBaseEnumInterface;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * 举报受理状态
  * @author afflatus
  */
+@JsonDeserialize
+@JsonSerialize
 public enum ReportStateEnum implements IBaseEnumInterface<Integer> {
 
     NO(0,"未受理"),
@@ -19,11 +26,11 @@ public enum ReportStateEnum implements IBaseEnumInterface<Integer> {
         this.value = value;
         this.title = title;
     }
-
+    @JsonValue
     public Integer getValue() {
         return value;
     }
-
+@JsonView
     public String getTitle() {
         return title;
     }
@@ -47,6 +54,7 @@ public enum ReportStateEnum implements IBaseEnumInterface<Integer> {
      * @param value
      * @return
      */
+    @JsonCreator
     public static String wonTitle(Integer value) {
         for (ReportStateEnum ot : values()) {
             if (ot.getValue().equals(value)) {

@@ -10,6 +10,7 @@ import lombok.Data;
  */
 @Data
 public class Ltopnotice implements Serializable {
+    private static final long serialVersionUID = 4852718650599461018L;
     /**
      * 主键，有排序作用
      */
@@ -40,5 +41,4 @@ public class Ltopnotice implements Serializable {
      */
     private String ltopnoticeurl;
 
-    private static final long serialVersionUID = 1L;
 }

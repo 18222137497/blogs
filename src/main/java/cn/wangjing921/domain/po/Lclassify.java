@@ -9,6 +9,8 @@ import lombok.Data;
  */
 @Data
 public class Lclassify implements Serializable {
+
+    private static final long serialVersionUID = 2238936111698431482L;
     /**
      * 分类id
      */
@@ -19,5 +21,4 @@ public class Lclassify implements Serializable {
      */
     private String lclassifytitle;
 
-    private static final long serialVersionUID = 1L;
 }

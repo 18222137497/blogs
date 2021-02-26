@@ -18,6 +18,8 @@ public interface LuserMapper {
 
     int insertSelective(Luser record);
 
+    Luser selectByUsername(String username);
+
     Luser selectByPrimaryKey(Integer luserid);
 
     int updateByPrimaryKeySelective(Luser record);

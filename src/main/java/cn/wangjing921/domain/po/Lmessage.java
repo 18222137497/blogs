@@ -10,6 +10,7 @@ import lombok.Data;
  */
 @Data
 public class Lmessage implements Serializable {
+    private static final long serialVersionUID = 9087097585356100469L;
     /**
      * 主键
 
@@ -36,5 +37,4 @@ public class Lmessage implements Serializable {
      */
     private Date senddate;
 
-    private static final long serialVersionUID = 1L;
 }

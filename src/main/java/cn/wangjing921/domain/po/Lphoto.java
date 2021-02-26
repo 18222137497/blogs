@@ -10,6 +10,7 @@ import lombok.Data;
  */
 @Data
 public class Lphoto implements Serializable {
+    private static final long serialVersionUID = -1716523380647083426L;
     private Integer lpid;
 
     /**
@@ -17,5 +18,4 @@ public class Lphoto implements Serializable {
      */
     private String lpurl;
 
-    private static final long serialVersionUID = 1L;
 }

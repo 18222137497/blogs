@@ -13,6 +13,7 @@ import lombok.Data;
  */
 @Data
 public class Luser implements Serializable {
+    private static final long serialVersionUID = 5903901908871919096L;
     /**
      * 主键不展示
      */
@@ -79,7 +80,7 @@ public class Luser implements Serializable {
     private Date createdate;
 
     /**
-     * 失效时间
+     * 最后一次登录时间
      */
     private Date deldate;
 
@@ -93,5 +94,4 @@ public class Luser implements Serializable {
      */
     private LVEnum LV;
 
-    private static final long serialVersionUID = 1L;
 }

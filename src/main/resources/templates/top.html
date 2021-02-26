@@ -47,7 +47,8 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <img alt="32x32" src="img/222.png" class="img-circle" style="margin-top: 7px" height="32"
+                    <input id="upload-input" onchange="imgChange(event)" style="position: absolute; top: 0; bottom: 0; left: 0;right: 0; opacity: 0;" type="file" accept="image/gif, image/jpg, image/png" />
+                    <img alt="32x32" th:src="@{/img/222.png}" class="img-circle" style="margin-top: 7px" height="32"
                          width="32"/>
                 </li>
                 <li>
@@ -73,13 +74,31 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">系统<strong class="caret"></strong></a>
                     <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="#" onclick="updateName()">修改昵称</a>
+                        </li>
                         <li>
                             <a href="#" onclick="hz()">合作</a>
                         </li>
                         <li>
                             <a href="#" onclick="gy()">关于</a>
                         </li>
+                        <li class="divider">
+                        </li>
                         <script>
+                            function updateName(){
+                                let newName=prompt("新昵称").replace(/(^\s*)|(\s*$)/g, '');
+                                if (newName!=null&&newName!=""){
+                                    if (newName.length>15){
+                                        alert("名字长度不能超过15")
+                                    }else {
+                                        alert("已提交申请");
+                                        //ajax修改昵称，传data和url
+                                    }
+                                }
+                            }
+
                             function hz() {
                                 alert("请邮件到18222137497@163.com")
                             }
@@ -88,8 +107,6 @@
                                 alert("项目创建日期：2021/01/20")
                             }
                         </script>
-                        <li class="divider">
-                        </li>
                         <li>
                             <a href="#">退出登录</a>
                         </li>

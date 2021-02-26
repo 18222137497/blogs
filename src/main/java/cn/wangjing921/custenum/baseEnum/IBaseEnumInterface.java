@@ -14,4 +14,5 @@ import java.io.Serializable;
 public interface IBaseEnumInterface<T> extends Serializable {
     T value();
     String title();
+
 }

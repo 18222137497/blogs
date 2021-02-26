@@ -1,11 +1,17 @@
 package cn.wangjing921.custenum.domainTypeEnum;
 
 import cn.wangjing921.custenum.baseEnum.IBaseEnumInterface;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * 用户激活状态
  * @author afflatus
  */
+@JsonDeserialize
+@JsonSerialize
 public enum UserStateEnum implements IBaseEnumInterface<Integer> {
     UNACTIVATED(0,"未激活"),
     LIVE(1,"正常"),
@@ -19,7 +25,7 @@ public enum UserStateEnum implements IBaseEnumInterface<Integer> {
         this.value = value;
         this.title = title;
     }
-
+    @JsonValue
     public Integer getValue() {
         return value;
     }
@@ -47,6 +53,7 @@ public enum UserStateEnum implements IBaseEnumInterface<Integer> {
      * @param value
      * @return
      */
+    @JsonCreator
     public static String wonTitle(Integer value) {
         for (UserStateEnum ot : values()) {
             if (ot.getValue().equals(value)) {

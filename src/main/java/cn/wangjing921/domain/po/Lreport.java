@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import cn.wangjing921.custenum.domainTypeEnum.ReportStateEnum;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 /**
@@ -12,6 +13,7 @@ import lombok.Data;
  */
 @Data
 public class Lreport implements Serializable {
+    private static final long serialVersionUID = 8891674993722723215L;
     /**
      * 主键
      */
@@ -52,5 +54,4 @@ public class Lreport implements Serializable {
      */
     private String returnMsg;
 
-    private static final long serialVersionUID = 1L;
 }

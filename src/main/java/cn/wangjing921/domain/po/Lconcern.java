@@ -10,6 +10,7 @@ import lombok.Data;
  */
 @Data
 public class Lconcern implements Serializable {
+    private static final long serialVersionUID = 8127578287643894693L;
     /**
      * 主键
      */
@@ -30,5 +31,4 @@ public class Lconcern implements Serializable {
      */
     private Date concerndate;
 
-    private static final long serialVersionUID = 1L;
 }

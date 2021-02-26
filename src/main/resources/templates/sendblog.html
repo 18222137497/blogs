@@ -1,57 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>发布博客</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./editormd/css/editormd.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/editormd/css/editormd.min.css}">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-    <script src="./editormd/editormd.min.js"></script>
-    <script src="js/myjs.js"></script>
-    <script type="text/javascript">
-        //初始化Markdown编辑器
-        var contentEditor;
-        $(function () {
-            contentEditor = editormd("md-content", {
-                width: "100%",//宽度
-                height: 500,//高度
-                syncScrolling: "single",//单滚动条
-                path: "./editormd/lib/"//依赖的包路径
-            });
-        });
-
-        //获得md并发布
-        function getMd() {
-            var as = document.getElementsByTagName('pre');
-            let markdown = "";
-            let count = 0;
-            for (var i = 0, j = as.length; i < j; i++) {
-                if (i == j - count / 2) {
-                    if (confirm("确认发布？") == true) {
-                        console.log(markdown);//发布
-                        return;
-                    } else {
-                        return;
-                    }
-                }
-                let textLine = as[i].innerText
-                if (textLine.indexOf("```") != -1) {
-                    count += 1;
-                }
-                markdown += textLine + "\n";
-            }
-            if (confirm("确认发布？") == true) {
-                console.log(markdown);
-            }
-        }
-
-        //发布方法(id,标题，分类，数据)
-        function send(id, title, classify, data) {
-
-        }
-    </script>
+    <script th:src="@{/editormd/editormd.min.js}"></script>
+    <script th:src="@{/js/myjs.js}"></script>
+    <script th:src="@{/js/sendblog.js}"></script>
 </head>
 <body>
 <div class="container">

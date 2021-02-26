@@ -13,6 +13,8 @@ import lombok.Data;
  */
 @Data
 public class Lblog implements Serializable {
+
+    private static final long serialVersionUID = -5102922798758218085L;
     /**
      * 主键，起排序作用
      */
@@ -69,6 +71,5 @@ public class Lblog implements Serializable {
      */
     private BlogRemarkEnum remark;
 
-    private static final long serialVersionUID = 1L;
 
 }
