@@ -14,6 +14,7 @@ import lombok.Data;
 @Data
 public class Lblog implements Serializable {
 
+
     private static final long serialVersionUID = -5102922798758218085L;
     /**
      * 主键，起排序作用
